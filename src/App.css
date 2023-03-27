@@ -1,0 +1,357 @@
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
+
+
+.App {
+  text-align: center;
+}
+
+body {
+  font-family:'Roboto';
+  min-height: 100vh;
+  color: white;
+  background-color: #080811;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) { }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+  .home
+  .container {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .hidden{
+    display: none;
+  }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  
+}
+
+
+
+.form-container {
+  background-color: #1e1e53;
+  display: flex;
+  flex-direction: column;
+  height: 50vw;
+  height: auto; 
+  padding: 30px;
+  border-radius: 10px;
+  margin: 2vw;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border: 0.3px solid !important;
+  border-color: #3f51b5 !important;
+}
+
+.textfield-input {
+  color: white !important;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.home {
+  background-color: #1e1e53;
+  border-radius: 10px;
+  overflow: hidden;
+
+}
+
+.container {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  scrollbar-color: #12142e #2429428c;
+}
+
+/* -----------------SECTIONS----------------- */
+.sidebar {
+  flex: 1;
+  /* max-width: 30%; */
+  background-color: #12122A;
+
+}
+.chat {
+  flex: 2;
+  /* max-width: 70%; */
+  flex-direction: column;
+  position: relative;
+}
+.no-chat {
+  margin: auto;
+
+
+}
+
+/* -----------------NAVBAR----------------- */
+.navbar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  background-color: #17193A;
+  border-radius: 0px 0px 0px 0px;
+  box-shadow: 5px 4px 8px 0px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.logo {
+  display: flex;
+  margin: auto auto auto 15px;
+  height: 70px;
+}
+.user {
+  align-items: center;
+  margin: auto 15px auto auto;
+  display: flex;
+  gap: 10px;
+}
+.avatar {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/* -----------------SEARCHBAR----------------- */
+.search {
+  padding: 10px;
+  align-items: center;
+  justify-content: start;
+}
+/* -----------------CHAT LIST----------------- */
+.chat-list {
+  padding: 0px 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.chat-item {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+
+}
+.selected {
+  background-color: #3D82CC;
+}
+.chat-item:hover {
+  background-color: #22224e;
+  cursor: pointer;
+
+}
+.chat-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.chat-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+.chat-title {
+  margin: auto auto auto 15px;
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+}
+.last-msg {
+  margin: auto auto auto 15px;
+  display: flex;
+  font-size: 15px;
+  color: lightgray;
+ 
+}
+
+/* -----------------CHAT HEADER----------------- */
+.chat-header {
+  display: flex;
+  height: 70px;
+  /* background-color: #17193A; */
+  background-color: #12122A;
+  border-radius: 0px 0px 0px 0px;
+  box-shadow: 5px 4px 8px 0px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.chat-name {
+  margin: auto auto auto 15px;
+  display: flex;
+  font-size: large;
+  font-weight: bold;
+  gap: 6px;
+}
+.header-img {
+  display: flex;
+  width: 50px;
+  margin: auto auto auto auto;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.header-icons {
+  margin: auto 15px auto auto;
+  display: flex;
+}
+
+/*-------------- INPUT ----------------*/
+.input {
+  display: flex;
+  flex-direction: column;
+}
+.input-bar {
+  background-color: #12122acc;
+  height: 70px;
+  display: flex;
+}
+.inputbox {
+  margin: auto 5px auto auto;
+  display: flex;
+  flex: 1;
+}
+.input-icons {
+  margin: auto 5px auto 15px;
+  display: flex;
+}
+.send-icons {
+  margin: auto 15px auto 5px;
+  display: flex;
+}
+.file-preview {
+  position: absolute;
+  bottom: 70px;
+  background-color: #161638;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  width: 100%;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
+}
+
+.file-preview img {
+  display: flex;
+  margin: auto;
+  max-width: 80%;
+  max-height: 80%;
+
+}
+.close-icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+  
+}
+
+/* -----------------MESSAGES----------------- */
+.messages {
+  height: calc(100% - 140px);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+.message {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  overflow: hidden;
+  word-break: break-word;
+
+}
+/* .message-info {
+} */
+.time {
+  font-size: 12px;
+  color: lightgray;
+  margin-top: auto;
+  margin-bottom: 7px;
+  margin-left: -8px;
+  margin-right: -8px;
+
+}
+.message-content {
+  background-color: #12122acc;
+  padding: 5px 10px;
+  max-width: 70%;
+  min-width: 5%;
+  border-radius: 0px 15px 15px 15px;
+  overflow: hidden;
+}
+.message-content img {
+  width: 50%;
+  margin: auto;
+  display: flex;
+
+}
+.owner {
+  flex-direction: row-reverse;
+}
+.owner .message-content  {
+  border-radius: 15px 0px 15px 15px;
+  background-color: #1a1a29cc;
+}
+
+
+
+/* -----------------text break/ellipsis----------------- */
+.textbreak{
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+  
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+
+}
+
+
+/* -----------------scrollbar----------------- */
+/*  ::-webkit- is for chrome */
+::-webkit-scrollbar {
+  width: 1.0em;
+  overflow-x: none;
+}
+::-webkit-scrollbar-track {
+  background-color: #2429428c;
+  margin-block: 0.25em;
+  border-radius: 0.3em;
+}
+::-webkit-scrollbar-thumb {
+  background: #12142e;
+  border-radius: 0.3em;
+}
