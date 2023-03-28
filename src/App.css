@@ -92,6 +92,7 @@ form {
   flex: 1;
   /* max-width: 30%; */
   background-color: #12122A;
+  height: 100%;
 
 }
 .chat {
@@ -146,6 +147,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  height: calc(100% - 150px);
+  overflow-y: auto;
 }
 .chat-item {
   display: flex;
