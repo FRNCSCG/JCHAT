@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField, Button } from '@mui/material'
+import { TextField, Button, CircularProgress } from '@mui/material'
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import {createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth, storage, db} from '../firebase'
@@ -10,6 +10,7 @@ import {Link, useNavigate} from "react-router-dom"
 
 export default function Register() {
   const [err, setErr] = useState(false);
+  const [progress, setProgress] = useState(0);
   const navigate = useNavigate()
 
   const handleSubmit = async(e) => {
@@ -21,21 +22,35 @@ export default function Register() {
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
-
       const storageRef = ref(storage, username);
       const uploadTask = uploadBytesResumable(storageRef, file);
       
-      uploadTask.on(
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setProgress(progress)
+
+          console.log('Upload is ' + progress + '% done');
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused');
+              break;
+            case 'running':
+              console.log('Upload is running');
+              break;
+            default:
+          }
+        },
         (error) => {
           setErr(true)
         },
         () => {
-          // Get image url
+          // Handle successful uploads on complete
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateProfile(res.user,{
               displayName:username,
               photoURL:downloadURL,
-
             });
             await setDoc(doc(db,"users", res.user.uid), {
               uid: res.user.uid,
@@ -45,7 +60,6 @@ export default function Register() {
             });
             await setDoc(doc(db,"userChats", res.user.uid), {});
             navigate("/");
-          
           });
         }
       
@@ -53,6 +67,7 @@ export default function Register() {
 
     } catch (err) {
       setErr(true)
+      console.log("error", err)
     }
 
   }
@@ -67,10 +82,12 @@ export default function Register() {
           <TextField className="white" type="text" label="username"></TextField>  
           <TextField className="white" type="email" label="email"></TextField>
           <TextField className="white" type="password" label="password"></TextField> 
-          <Button className="white" variant="outlined" component="label">
+          <Button style={{}} className="white" variant="outlined" component="label">
             <UploadFileIcon/>
-            Upload picture
+            <p>Upload picture</p>
             <input accept="image/*" type="file" hidden />
+            {progress!==0 && <CircularProgress style={{marginLeft:"10px"}} variant="determinate" value={progress} /> }
+            
           </Button>
           <Button variant="contained" type='submit' sx={{height:"50px"}}> Sign Up </Button>
         
