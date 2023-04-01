@@ -1,9 +1,9 @@
-import { TextField } from '@mui/material'
+import { Divider, IconButton, TextField } from '@mui/material'
 import React, { useContext, useState } from 'react'
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import { collection, where, getDocs, query, getDoc, doc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
-
+import ClearIcon from '@mui/icons-material/Clear';
 
 export default function Search() {
   const [username, setUsername] = useState("")
@@ -69,6 +69,11 @@ export default function Search() {
     setUsername("")
   };
 
+  const handleClearClick = () => {
+    setUsername("")
+    setUser("")
+  }
+
   return (
     <div className='search'>
       <TextField
@@ -82,19 +87,25 @@ export default function Search() {
           style: { color: '#3f51b5' },
         }}
         InputProps={{
-          className:"textfield-input"
+          className:"textfield-input",
+          endAdornment:(<IconButton onClick={handleClearClick} sx={{visibility: username ? "visible" : "hidden", color:"aliceblue"}}><ClearIcon/></IconButton>)
         }}
+
       />
       <div style={{height:'auto', width:'100%', backgroundColor:'darkblue'}}>
-        {err && (<span>User not found!</span>)}
-        {user && (
+        {(user) ?  (
           <div className="chat-item" onClick={handleSelect}>
             <img src={user.photoURL} className="chat-img" alt="" />
             <div className='chat-info'>
               <p className='chat-title'>{user.displayName}</p>
             </div>
+            <Divider variant='middle'/>
           </div>
-        )}
+          
+        )
+        :
+          <></>
+        }
       </div>
     </div>
   )

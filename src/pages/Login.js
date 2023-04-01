@@ -3,11 +3,15 @@ import { TextField, Button } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
+import { useMyContext } from '../context/LayoutContext';
 
 export default function Login() {
 
   const [err, setErr] = useState(false);
   const navigate = useNavigate()
+  const [state, setState] = useMyContext();
+
+
 
   const handleSubmit = async(e) => {
     e.preventDefault()
@@ -16,7 +20,7 @@ export default function Login() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password)
-
+      setState({ ...state, logged: true})
       navigate("/");
     } catch (err) {
       setErr(true)

@@ -4,6 +4,7 @@ import Search from './Search'
 import ChatList from './ChatList'
 
 
+
 export default function Sidebar({show}) {
   return (
     <div className={`sidebar ${show!==true && "hidden"}`}>
