@@ -68,10 +68,12 @@ body {
   }
 
   .search {
-    position: fixed;
+    position: relative;
     top: 0;
     margin-top: 70px ;
   }
+
+
 
  
 
