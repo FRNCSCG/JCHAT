@@ -68,6 +68,8 @@ body {
   }
 
   .search {
+    position: fixed;
+    top: 0;
     margin-top: 70px ;
   }
 
