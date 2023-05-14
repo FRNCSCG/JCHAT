@@ -394,7 +394,9 @@ form {
   }
 
   .chat-list {
-    margin-top: 140px;
+    position: fixed;
+    top: 130px;
+    width: 100%;
   }
 
 }
