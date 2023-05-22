@@ -119,7 +119,20 @@ form {
   padding: 10px;
   align-items: center;
   justify-content: start;
-  height: 35px;
+}
+.search-results {
+  opacity: 0%;
+  height: 0px;
+  border-radius: 0px 0px 15px 15px;
+  display: none;
+  background-color: #22223b;
+}
+
+.searching {
+  display: block;
+  opacity: 100%;
+  height: 300px;
+  transition: 0.5s;
 }
 /* -----------------CHAT LIST----------------- */
 .chat-list {
@@ -356,6 +369,7 @@ form {
     height: 100vh;
   }
 
+
   .hidden{
     display: none;
   }
@@ -371,15 +385,6 @@ form {
     margin-top: 70px;
   
   }
-  /* .input {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  
-  }
-  .file-preview {
-    margin-bottom: 70px;
-  } */
   
   .navbar {
     position: fixed;
@@ -390,13 +395,25 @@ form {
   .search {
     position: fixed;
     top: 70px;
+    left: 3px;
+    right: 30px;
+    margin-right: 15px;
     width: 100%;
+    z-index: 3;
+  }
+  .search-results {
+    width: 96vw;
   }
 
   .chat-list {
     position: fixed;
     top: 130px;
     width: 100%;
+    z-index: 2;
+  }
+
+  .messages {
+    margin-top: 70px;
   }
 
 }
